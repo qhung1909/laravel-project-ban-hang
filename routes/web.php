@@ -26,4 +26,7 @@ Route::post('/register', [AuthController::class, 'registerPost'])->name('registe
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
 //Admin
-Route::get('/admin', [AdminContrller::class, 'index'])->middleware('admin');
+//Admin
+Route::get('/admin', [AdminContrller::class, 'dashboard'])->name('admin')->middleware('admin');
+Route::get('/admin/addProduct', [AdminContrller::class, 'createProduct'])->name('products.create')->middleware('admin');
+Route::post('/admin/addProduct', [AdminContrller::class, 'store'])->name('products.store')->middleware('admin');
