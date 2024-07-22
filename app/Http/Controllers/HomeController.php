@@ -5,14 +5,17 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\View;
-
+use App\Models\User;
+use App\Models\Cart;
+use Illuminate\Support\Facades\Auth;
 class HomeController extends Controller
 {
-    function __construct()
+    public function __construct()
     {
-        $categories = DB::table('categories')->where('an_hien', 1)->orderBy('thu_tu', 'asc')->get();
-        View::share('categories', $categories);
+        $user = Auth::user();
+
     }
+
     function index(){
         $categories = DB::table('categories')
                         ->leftJoin('products', 'categories.id', '=', 'products.categories')
@@ -20,9 +23,10 @@ class HomeController extends Controller
                         ->where('categories.an_hien', 1)
                         ->groupBy('categories.id')
                         ->orderBy('categories.thu_tu', 'asc')
-                        ->get();
+                        ->get();    
+        
 
-        return view('home', ['categories' => $categories]);
+        return view('home', compact('categories'));
     }
 
     function login(){

@@ -84,7 +84,7 @@
                         @endif
 
                         <br>
-                        <a href="" style="text-decoration: none;"><button class="btn btn-md btn-success">Thêm sản
+                        <a href="admin/addProduct" style="text-decoration: none;"><button class="btn btn-md btn-success">Thêm sản
                                 phẩm</button></a>
                                 
                         <table class="table">
@@ -109,8 +109,8 @@
                                         <td><img src="{{ asset('upload/products') . '/' . $product->img }}" alt=""
                                                 style="max-width: 100px;"></td>
                                         <td>{{ $product->tensp }}</td>
-                                        <td>{{ $product->price }}</td>
-                                        <td>{{ $product->price_discount }}</td>
+                                        <td>{{ number_format($product->price, 0, ',', '.') }} VNĐ</td>
+                                        <td>{{ number_format($product->price_discount, 0, ',', '.') }} VNĐ</td>
                                         <td><span class="badge text-bg-success"></span>{{ $product->category_name }} </td>
                                         <td>{{ $product->xem }}</td>
                                         <td>
@@ -127,8 +127,12 @@
                                                 Đang bị ẩn
                                             @endif
                                         </td>
-                                        <td><button class="btn btn-sm btn-warning">Sửa</button>
-                                            <button class="btn btn-sm btn-danger">Xóa</button>
+                                        <td><a href="{{route('product.edit',$product->id)}}" class="btn btn-sm btn-warning">Sửa</a>
+                                            <a href="#" onclick = "deleteProduct({{$product->id}})" class="btn btn-sm btn-danger">Xóa</a>
+                                            <form id="delete-product-from-{{$product->id}}" action="{{route('product.delete',$product->id)}}" method="post">
+                                                @csrf
+                                                @method('delete')
+                                            </form>
                                         </td>
                                     </tr>
                                 @endforeach

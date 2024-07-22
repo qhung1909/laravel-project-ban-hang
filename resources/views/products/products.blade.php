@@ -1,13 +1,14 @@
 @extends('layouts.app')
 
 @section('title')
-    Products
+    {{$category->ten_dm}}
 @endsection
 
 @section('categories')
 @endsection
 
 @section('content')
+
     <div class="p-3" style="background-color: #3E3E3F;">
         <div class="container">
             <div class="h-50 my-5 text-white d-flex justify-content-center align-items-center">
@@ -64,7 +65,7 @@
                                         aria-expanded="false">
                                         <i class="fa-solid fa-filter"></i> Sắp xếp
                                     </button>
-        
+
                                     <ul class="dropdown-menu">
                                         <li>
                                         <li><button class="dropdown-item disabled" href="#"><i
@@ -72,17 +73,24 @@
                                                 Sắp xếp</button></li>
                                         <hr class="dropdown-divider">
                                         </li>
-                                        <li><a href="{{ route('product', ['id' => $category->id, 'price_desc' => true]) }}" style="text-decoration: none"><button class="dropdown-item" href="#"><i
-                                            class="fa-solid fa-arrow-down-short-wide"></i> Giá từ cao xuống
-                                        thấp</button></li></a>
-                                        <li><a href="{{ route('product', ['id' => $category->id, 'price_asc' => true]) }}" style="text-decoration: none"><button class="dropdown-item" href="#"><i
-                                                    class="fa-solid fa-arrow-up-short-wide"></i> Giá từ thấp đến
-                                                cao</button></li></a>
-                                        <li><a href="{{ route('product', ['id' => $category->id, 'name_asc' => true]) }}" style="text-decoration: none"><button class="dropdown-item" href="#"><i
-                                                    class="fa-solid fa-arrow-down-a-z"></i> Sắp xếp từ A -> Z </button></li></a>
-                                        <li><a href="{{ route('product', ['id' => $category->id, 'name_desc' => true]) }}" style="text-decoration: none"><button class="dropdown-item" href="#"><i
-                                                    class="fa-solid fa-arrow-up-z-a"></i>
-                                                Sắp xếp từ Z -> A</button></li></a>
+                                        <li><a href="{{ route('product', ['id' => $category->id, 'price_desc' => true]) }}"
+                                                style="text-decoration: none"><button class="dropdown-item"
+                                                    href="#"><i class="fa-solid fa-arrow-down-short-wide"></i> Giá từ
+                                                    cao xuống
+                                                    thấp</button></li></a>
+                                        <li><a href="{{ route('product', ['id' => $category->id, 'price_asc' => true]) }}"
+                                                style="text-decoration: none"><button class="dropdown-item"
+                                                    href="#"><i class="fa-solid fa-arrow-up-short-wide"></i> Giá từ
+                                                    thấp đến
+                                                    cao</button></li></a>
+                                        <li><a href="{{ route('product', ['id' => $category->id, 'name_asc' => true]) }}"
+                                                style="text-decoration: none"><button class="dropdown-item"
+                                                    href="#"><i class="fa-solid fa-arrow-down-a-z"></i> Sắp xếp từ A
+                                                    -> Z </button></li></a>
+                                        <li><a href="{{ route('product', ['id' => $category->id, 'name_desc' => true]) }}"
+                                                style="text-decoration: none"><button class="dropdown-item"
+                                                    href="#"><i class="fa-solid fa-arrow-up-z-a"></i>
+                                                    Sắp xếp từ Z -> A</button></li></a>
 
                                     </ul>
                                 </div>
@@ -97,17 +105,18 @@
                     @if ($message)
                         <div class="alert alert-danger">{{ $message }}</div>
                     @endif
-                    @foreach ($products as $products)
+                    @foreach ($products as $product)
                         <div class="col-4 col-md-3 col-sm-6 my-3">
-                            <a href="/products/detail/{{ $products->id }}" style="text-decoration: none;">
+                            <a href="/products/detail/{{ $product->id }}" style="text-decoration: none;">
                                 <div class="card text-bg-dark rounded-5">
                                     <div class="card-header">
-                                        <img src="{{ $products->img }}" class="card-img-top">
+                                        <img src="{{ $product->img }}" class="card-img-top">
                                     </div>
                                     <div class="card-body">
-                                        <p class="card-text text-center">{{ $products->tensp }}</p>
-                                        <h5 class="text-center">{{ number_format($products->price, 0, ',', '.') }} VNĐ <del
-                                                class="text-sm-center">{{ number_format($products->price_discount, 0, ',', '.') }} VNĐ</del></h5>
+                                        <p class="card-text text-center">{{ $product->tensp }}</p>
+                                        <h5 class="text-center">{{ number_format($product->price, 0, ',', '.') }} VNĐ <del
+                                                class="text-sm-center">{{ number_format($product->price_discount, 0, ',', '.') }}
+                                                VNĐ</del></h5>
                                     </div>
                                 </div>
                             </a>
@@ -115,14 +124,9 @@
                     @endforeach
                 </div>
             </div>
-            <div class="d-flex justify-content-center align-items-center">
-                <nav aria-label="Page navigation example" data-bs-theme="dark">
-                    <ul class="pagination">
-                        <li class="page-item>
-                        <a class="page-link" href=""></a>
-                        </li>
-                    </ul>
-                </nav>
+
+            <div class="d-flex justify-content-center align-items-center" data-bs-theme="dark">
+                {{ $products->links() }}
             </div>
         </div>
     @endsection

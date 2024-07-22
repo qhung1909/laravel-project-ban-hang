@@ -2,6 +2,7 @@
 
 @section('title', 'Đăng kí')
 @section('content')
+
 <div class="z-0 d-flex align-items-center" style="background-color: #535353; height: 932px;">
     <div class="container z-1 rounded-5" style="background-color: rgb(223, 221, 221);">
         <div class="row me-0">

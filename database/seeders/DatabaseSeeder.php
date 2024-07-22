@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\DB;
+
 class DatabaseSeeder extends Seeder
 {
     /**
@@ -360,7 +361,6 @@ class DatabaseSeeder extends Seeder
             'password' => bcrypt('123'),
         ]);
     
-        // Thêm dữ liệu admin
         DB::table('users')->insert([
             'name' => 'Admin',
             'email' => 'admin@example.com',

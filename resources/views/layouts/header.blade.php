@@ -14,7 +14,7 @@
                     </li>
                 @endforeach
                 <li class="nav-item mx-3">
-                    <a class="nav-link active" aria-current="page" href="">TekZone</a>
+                    <a class="nav-link active" aria-current="page" href="/news">TekZone</a>
                 </li>
             </ul>
         </div>
@@ -24,7 +24,7 @@
                     data-bs-placement="bottom" data-bs-title="Giỏ hàng">
                     <i class="fa-solid fa-cart-shopping"></i> 
                     <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger z-50">
-                        +12
+                        12
                     </span>
                 </button>
             </a>
@@ -47,7 +47,9 @@
                 </ul>
             </li>
             @else
-                <a href="{{ route('login') }}" class="btn btn-outline-light mx-2"><i
+            <a href="/tracking" class="btn btn-outline-light mx-2"><i
+                    class="fa-solid fa-search"></i></a>
+            <a href="{{ route('login') }}" class="btn btn-outline-light mx-2"><i
                         class="fa-solid fa-unlock-keyhole"></i></a>
             @endif
 </nav>

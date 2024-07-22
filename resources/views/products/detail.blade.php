@@ -17,10 +17,14 @@
           </div>
           <div class="col-md-6">
               <h2 class="text-white"><strong>{{$product->tensp}}</strong></h2>
-              <p>Gía và khuyến mãi tại: Hồ Chí Minh</p>
+              <p>Gía và khuyến mãi tại: Hồ Chí Minh </p>
+              @{{hello}}
               <div class="text-white">
                   <h3 class="d-inline">Giá: {{ number_format($product->price, 0, ',', '.') }} VNĐ  </h3><del class="d-inline"></del>
                   <span class="badge text-bg-warning d-inline">%</span>
+              </div>
+              <div class="form-group">
+                <input type="number" class="form-control" value="1" min ="1" ng-model = "quantity">
               </div>
               <p class="my-3">Dung lượng</p>
               <div class="row my-3">
@@ -74,7 +78,7 @@
                   </div>
               </div>
 
-              <button class="btn btn-primary text-center text-white my-3 w-100" style="height: 8%;" ng-click="mua(product)">
+              <button class="btn btn-primary text-center text-white my-3 w-100" ng-click="addToCart({{$product->id}}, quantity)">
                   <h4>Mua ngay</h4>
               </button>
               <div class="row">
@@ -180,4 +184,13 @@
 </div>
 
 
+@endsection
+
+@section('viewFunction')
+    <script>
+        viewFunction = function($scope){
+            $scope.quantity = 1;
+
+        }
+    </script>
 @endsection

@@ -6,6 +6,8 @@ use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Support\Facades\Auth;
+use PHPUnit\Framework\MockObject\ReturnValueNotConfiguredException;
+
 class Admin
 {
     /**
@@ -18,6 +20,7 @@ class Admin
 
         if(Auth::check() && Auth::user()->role == 'admin'){
             return $next($request);
+
         }
         return redirect('/');
     }

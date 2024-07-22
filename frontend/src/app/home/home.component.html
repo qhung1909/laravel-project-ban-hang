@@ -1,0 +1,16 @@
+<div *ngIf="list_task.length > 0; else noData">
+    <div *ngFor="let task of list_task" class="product-card">
+      <h2>{{ task.tensp }}</h2>
+      <img src ="{{ task.img }}" alt="{{ task.tensp }}">
+      <p>Price: {{ task.price | currency }}</p>
+      <p>Discounted Price: {{ task.price_discount | currency }}</p>
+      <p>Views: {{ task.xem }}</p>
+      <p *ngIf="task.hot">Hot Product!</p>
+      <p *ngIf="task.an_hien">Visible</p>
+      <p *ngIf="!task.an_hien">Hidden</p>
+      <p>Category: {{ task.categories }}</p>
+      <p>Attribute: {{ task.tinh_chat }}</p>
+    </div>
+  </div>
+  <ng-template #noData>
+<p>Dump</p>  

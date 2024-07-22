@@ -5,6 +5,7 @@
 @endsection
 
 @section('heading')
+
 <div id="carouselExampleInterval" class="carousel carousel-dark slide" data-bs-ride="carousel">
     <div class="carousel-indicators">
         <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active"

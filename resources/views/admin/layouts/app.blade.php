@@ -67,3 +67,10 @@
     });
 </script>
 
+<script>
+  function deleteProduct(id){
+    if(confirm("Bạn muốn xóa sản phẩm này chứ")){
+      document.getElementById("delete-product-from-"+id).submit();
+    }
+  }
+</script>
